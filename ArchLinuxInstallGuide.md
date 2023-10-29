@@ -722,6 +722,23 @@ alias c='clear'
 
 I don't think that alias worked. I switched terminals which I think made them not carry over. I think it just erases every time it closes. Probably have to edit some config file.
 
+I have to add it to .bashrc.
+
+```
+nano ~/.bashrc
+
+
+alias systart='sudo systemctl start'
+
+alias spac='sudo pacman -S'
+
+alias c='clear'
+
+
+source ~/.bashrc
+```
+
+
 Color coding XTerminal. The Alacritty was interesting, but it was not updating as I would like it to. I had to click it to show the option for y/n when installing packages.
 
 Xterm is also laggy, clear does not always "clear".
