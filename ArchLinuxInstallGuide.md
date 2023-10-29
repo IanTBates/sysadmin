@@ -23,7 +23,7 @@ Compared sha256 checksum - 292269ba9bf8335b6a885921a00d311cdc1dcbe9a1375f297f7f3
 
 After powering on the VM, and selecting EFI mode, it should look like this:
 
-![Alt text](image.png)
+![archiso](image.png)
 
 Refer to the Arch Linux Installation Guide
 1.5 Set The console Key Board Link
@@ -51,7 +51,7 @@ The size refers to whether the image is a 32 or 64 bit system.
 
 Example:
 
-![Alt text](image-1.png)
+![cat efi](image-1.png)
 
 ### 1.7 Connect to the internet
 
@@ -61,11 +61,11 @@ Example:
 # ping archlinux.org
 ```
 Example:
-![Alt text](image-2.png)
+![ip link](image-2.png)
 
 Example:
 
-![Alt text](image-3.png)
+![ping archlinux](image-3.png)
 
 ### 1.8 Update the system clock
 
@@ -73,7 +73,7 @@ Example:
 # timedatectl
 ```
 Example:
-![Alt text](image-4.png)
+![timedatectl](image-4.png)
 
 ### 1.9 Partition the disks
 
@@ -112,23 +112,23 @@ p
 
 w
 ```
-![Alt text](image-5.png)
+![fdisk -l](image-5.png)
 
-![Alt text](image-6.png)
+![fdisk /dev/sda](image-6.png)
 
-![Alt text](image-7.png)
+![m](image-7.png)
 
-![Alt text](image-8.png)
+![p](image-8.png)
 
-![Alt text](image-9.png)
+![n](image-9.png)
 
-![Alt text](image-10.png)
+![p](image-10.png)
 
-![Alt text](image-11.png)
+![n](image-11.png)
 
-![Alt text](image-12.png)
+![p](image-12.png)
 
-![Alt text](image-13.png)
+![w](image-13.png)
 
 ### 1.10 Format the partitions
 
@@ -144,13 +144,13 @@ w
 #lsblk -f
 ```
 
-![Alt text](image-14.png)
+![lsblk -f](image-14.png)
 
-![Alt text](image-15.png)
+![mkfs.ext4 /dev/sda2](image-15.png)
 
-![Alt text](image-16.png)
+![mkfs.fat -F 32 /dev/sda1](image-16.png)
 
-![Alt text](image-17.png)
+![mkfs.fat -F 32 /dev/sda1](image-17.png)
 
 
 
@@ -173,11 +173,11 @@ w
 # findmnt /dev/sda1
 
 ```
-![Alt text](image-18.png)
+![findmnt](image-18.png)
 
-![Alt text](image-19.png)
+![mount /dev/sda2 /mnt](image-19.png)
 
-![Alt text](image-20.png)
+![mount --mkdir /dev/sda1 /mnt/boot](image-20.png)
 
 
 # Installation
@@ -194,11 +194,11 @@ w
 # pacman -Syyu
 
 ```
-![Alt text](image-21.png)
+![ls /etc](image-21.png)
 
-![Alt text](image-22.png)
+![ls /etc/pacman.d](image-22.png)
 
-![Alt text](image-23.png)
+![Mirrors](image-23.png)
 
 I can try the sweedish mirror.
 
@@ -220,15 +220,15 @@ man-db man-pages texinfo
 diffutils sysfsutils
 grub efibootmgr
 ```
-![Alt text](image-24.png)
+![pacstrap -K /mnt base linux-firmware...](image-24.png)
 
 I am not a perfect typer
 
-![Alt text](image-25.png)
+![retry](image-25.png)
 
 Tried again. Good enough... I'm sure it'll work... soon.
 
-![Alt text](image-26.png)
+![retry 2](image-26.png)
 
 ### Configure the system
 
@@ -239,7 +239,7 @@ Tried again. Good enough... I'm sure it'll work... soon.
 # genfstab -U /mnt >> /mnt/etc/fstab
 
 ```
-![Alt text](image-27.png)
+![genfstab -U /mnt >> /mnt/etc/fstab](image-27.png)
 
 ### 3.2 Chroot
 
@@ -247,7 +247,7 @@ Tried again. Good enough... I'm sure it'll work... soon.
 # arch-chroot /mnt
 
 ```
-![Alt text](image-28.png)
+![arch-chroot /mnt](image-28.png)
 
 ### 3.3 Time zone
 
@@ -259,9 +259,9 @@ Tried again. Good enough... I'm sure it'll work... soon.
 
 ```
 
-![Alt text](image-29.png)
+![ln -sf /usr/share/zoninfo/US/Central /etc/localtime](image-29.png)
 
-![Alt text](image-30.png)
+![hwclock --systohc](image-30.png)
 
 ### 3.4 Localization
 
@@ -278,11 +278,11 @@ Edit /etc/locale.gen and uncomment en_US.UTF-8 UTF-8 and other needed UTF-8 loca
 LANG=en_US.UTF-8
 ```
 
-![Alt text](image-31.png)
+![nano](image-31.png)
 
-![Alt text](image-32.png)
+![locale-gen](image-32.png)
 
-![Alt text](image-33.png)
+![cat etc/locale.conf](image-33.png)
 
 ### 3.5 Network configuration
 
@@ -314,7 +314,7 @@ $ nmcli connection
 
 ```
 
-![Alt text](image-34.png)
+![cat /etc/hostname](image-34.png)
 
 
 
@@ -339,7 +339,7 @@ I skipped.
 
 I changed the password
 
-![Alt text](image-35.png)
+![passwd](image-35.png)
 
 
 ### 3.8 Boot loader
@@ -404,21 +404,21 @@ pacman-key --populate archlinux
 ```
 
 
-![arch](image-36.png)
+![pacman -U grub efibootmgr](image-36.png)
 
-![Alt text](image-37.png)
+![again](image-37.png)
 
-![Alt text](image-38.png)
+![update-ca-trust](image-38.png)
 
-![Alt text](image-39.png)
+![pacman-key --init pacman-key --populate archlinux](image-39.png)
 
-![Alt text](image-40.png)
+![pacman -S grub](image-40.png)
 
-![Alt text](image-41.png)
+![findmnt](image-41.png)
 
-![Alt text](image-42.png)
+![grub-install --target](image-42.png)
 
-![Alt text](image-43.png)
+![grub-mkconfig](image-43.png)
 
 
 That was frustrating.
@@ -434,7 +434,7 @@ That was frustrating.
 
 # Post-installation
 
-![Alt text](image-44.png)
+![ar linux](image-44.png)
 
 I believe it was successful.
 
@@ -457,20 +457,20 @@ I believe it was successful.
 GraceHopper1906
 
 ```
-![Alt text](image-45.png)
+![useradd](image-45.png)
 
 
 
-Also edit the /etc/sudoers file, to give sudo group sudo permissions.
+Also edit the /etc/sudoers file, to give sudo group sudo permissions, by uncommenting the sudoers group permissions.
 
 ```
 # visudo
 
 pacman -S vi
 ```
-![Alt text](image-46.png)
+![visudo](image-46.png)
 
-![Alt text](image-47.png)
+![yikes, i broke it](image-47.png)
 
 ummmm... i dont like vi. for some reason i could not get the commands to pop up, so i had to restart vm.
 
@@ -486,7 +486,7 @@ ummmm... i dont like vi. for some reason i could not get the commands to pop up,
 # usermod -aG sudo codi
 
 ```
-![Alt text](image-48.png)
+![sudoers](image-48.png)
 ```
 pacman -S budgie-desktop
 
@@ -528,7 +528,7 @@ systemctl start gdm.service
 ```
 
 
-![Alt text](image-49.png)
+![install budgie](image-49.png)
 
 ```
 	
@@ -547,14 +547,14 @@ sudo pacman -S xorg xterm xorg-xinit
 
 startx
 ```
-![Alt text](image-50.png)
+![terminal thing](image-50.png)
 
 ```
 sudo pacman -S gdm
 sudo systemctl enable gdm
 sudo systemctl start gdm
 ```
-![Alt text](image-51.png)
+![gdm](image-51.png)
 
 
 
@@ -568,9 +568,9 @@ export PATH=$PATH:/bin/sh (appending)
 
 had to ./ before file
 
-![Alt text](image-52.png)
+![run extractgst script](image-52.png)
 
-![Alt text](image-53.png)
+![shell themes](image-53.png)
 
 
 ```
@@ -585,9 +585,9 @@ Not sure what I did but now I have no cursor, ok now its back.
 
 I am going to try to load into budgie-desktop.
 
-![Alt text](image-54.png)
+![gdm to budgie](image-54.png)
 
-![Alt text](image-55.png)
+![budgie](image-55.png)
 
 I am going to install Alacritty.
 
@@ -603,7 +603,7 @@ sudo systemctl enable NetworkManager.service
 sudo systemctl start NetworkManager.service
 ```
 
-![Alt text](image-56.png)
+![alacritty](image-56.png)
 
 omni color scheme
 
@@ -624,7 +624,7 @@ import:
 ```
 I tried omni and baitong.
 
-![Alt text](image-57.png)
+![baitong](image-57.png)
 
 now cyber_punk_neon, a bit better me thinks.
 
@@ -635,7 +635,7 @@ sudo pacman -S elinks
 sudo pacman -S chromium
 
 ```
-![Alt text](image-58.png)
+![harvey on chromium](image-58.png)
 
 chromium works, not sure where elinks even is.
 
@@ -646,16 +646,16 @@ elinks --help
 
 elinks google.com
 ```
-![Alt text](image-59.png)
+![elinks](image-59.png)
 
 
 aint that something.
 
-![Alt text](image-60.png)
+![elinks broke](image-60.png)
 
 I am not very good at operating this thing, I think I broke it.
 
-![Alt text](image-61.png)
+![kill elinks](image-61.png)
 
 ```
 kill 3216
@@ -664,7 +664,7 @@ top
 k
 1829
 ```
-![Alt text](image-62.png)
+![actually kill](image-62.png)
 
 
 ```
@@ -674,9 +674,9 @@ sudo pacman -S fish
 
 sudo pacman -S zsh
 ```
-![Alt text](image-65.png)
+![echo $SHELL](image-65.png)
 
-![Alt text](image-63.png)
+![fish](image-63.png)
 
 error??
 
@@ -718,7 +718,7 @@ alias spac='sudo pacman -S'
 
 alias c='clear'
 ```
-![Alt text](image-66.png)
+![alias](image-66.png)
 
 I don't think that alias worked. I switched terminals which I think made them not carry over. I think it just erases every time it closes. Probably have to edit some config file.
 
@@ -769,7 +769,7 @@ cp /etc/skel/.xinitrc ~/
 xrdb -query
 
 ```
-![Alt text](image-67.png)
+![xrdb -query](image-67.png)
 
 still not working...moving on.
 
@@ -778,7 +778,7 @@ I will just create the file, not from the skeleton that apparently does not exit
 ```
 nano ~/.Xresources
 ```
-![Alt text](image-68.png)
+![xrdb -query -all](image-68.png)
 
 hmmm...ok. 
 
@@ -787,7 +787,7 @@ xterm
 ```
 aha...hmmm. I may have overwritten some things.
 
-![Alt text](image-69.png)
+![new xterm](image-69.png)
 
 alright. good enought.
 
@@ -803,7 +803,7 @@ Alright, its downloaded, but I clearly have access to the internet and I am pret
 sudo pacman -S spotify-launcher
 ```
 
-![Alt text](image-70.png)
+![spotify](image-70.png)
 
 well that works.
 
