@@ -19,7 +19,7 @@ The console should look like this, with Docker and Docker-compose already instal
 ![Alt text](image-3.png)
 
 ## Setup Wireguard
-Using the guide at https://thematrix.dev/setup-wireguard-vpn-server-with-docker/ fun these commands:
+Using the guide at https://thematrix.dev/setup-wireguard-vpn-server-with-docker/ run these commands:
 
 ```
 mkdir -p ~/wireguard/
